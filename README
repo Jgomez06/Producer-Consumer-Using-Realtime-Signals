@@ -1,0 +1,23 @@
+Author:   Jonathan Castellanos-Gomez
+
+Purpose:
+This program uses real time signals and shared memory to simulate a producer-consumer process. 
+
+Compilation:
+To compile the main program, move to the directory containing the files 'prodcon.c', 'Consumer.c' and 'sharedMem.h'. Execute the terminal commands:
+
+   	   gcc -o prodcon prodcon.c
+	   gcc -o con Consumer.c
+
+Execution:
+To execute the program, move to the directory containing the executables 'prodcon.exe' and 'Consumer.exe', and execute the terminal command:
+
+   	   ./prodcon <file_path>
+
+
+Description:
+
+The main program, prodcon.c, takes an input file as an argument, creates a shared memory segment and forks a child process. The chlid process executes the Consumer.c program and is passed the shared memory segment information that the parent process created. The parent process will read from a file, store the data that it read into a buffer in the shared memory segment, send a real-time signal to the child process, and will wait until receives a signal back. The child process will wait to receive a real-time signal from the parent process, and then it will read the data in the shared memory buffer, write that data tot he output file, and signal the parent process. This will continue until all the input file contents have been processed. 
+
+ATTENTION:
+
